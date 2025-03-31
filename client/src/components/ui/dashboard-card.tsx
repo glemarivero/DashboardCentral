@@ -18,15 +18,15 @@ export default function DashboardCard({ dashboard, isFavorite = false }: Dashboa
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "ecom":
-        return "bg-accent text-white";
+        return "bg-purple-600 text-white font-semibold";
       case "business":
-        return "bg-primary text-white";
+        return "bg-green-600 text-white font-semibold";
       case "strategy":
-        return "bg-secondary text-white";
+        return "bg-amber-600 text-white font-semibold";
       case "data":
-        return "bg-primary text-white";
+        return "bg-blue-600 text-white font-semibold";
       default:
-        return "bg-primary text-white";
+        return "bg-blue-600 text-white font-semibold";
     }
   };
 
@@ -89,10 +89,10 @@ export default function DashboardCard({ dashboard, isFavorite = false }: Dashboa
         <h3 className="font-bold text-lg text-black mb-1">{dashboard.title}</h3>
         <p className="text-gray-700 text-sm mb-3">{dashboard.description}</p>
         <div className="flex items-center justify-between">
-          <span className="text-xs text-neutral-dark">
+          <span className="text-xs text-gray-700 font-medium">
             Last updated: {formatTimeAgo(new Date(dashboard.updatedAt))}
           </span>
-          <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-sm font-medium hover:underline">
+          <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-sm font-semibold hover:underline">
             View Dashboard
           </Link>
         </div>

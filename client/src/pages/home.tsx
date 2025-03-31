@@ -90,13 +90,13 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section with Search Bar */}
-        <section className="bg-gradient-to-r from-primary/90 to-primary">
+        <section className="bg-gradient-to-r from-primary to-primary-dark">
           <div className="container mx-auto px-4 py-12 md:py-20">
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-md">
                 Find the right dashboard for your insights
               </h1>
-              <p className="text-white text-lg max-w-2xl mx-auto font-medium">
+              <p className="text-white text-lg max-w-2xl mx-auto font-semibold drop-shadow-sm">
                 Search across our collection of dashboards to discover the data that powers your business decisions
               </p>
             </div>

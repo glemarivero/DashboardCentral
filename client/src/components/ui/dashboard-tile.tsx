@@ -17,15 +17,15 @@ export default function DashboardTile({ dashboard, isFavorite = false }: Dashboa
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "data":
-        return "bg-primary/10 text-primary";
+        return "bg-blue-100 text-blue-800 font-semibold";
       case "business":
-        return "bg-primary/10 text-primary";
+        return "bg-green-100 text-green-800 font-semibold";
       case "ecom":
-        return "bg-accent/10 text-accent";
+        return "bg-purple-100 text-purple-800 font-semibold";
       case "strategy":
-        return "bg-secondary/10 text-secondary";
+        return "bg-amber-100 text-amber-800 font-semibold";
       default:
-        return "bg-primary/10 text-primary";
+        return "bg-blue-100 text-blue-800 font-semibold";
     }
   };
 
@@ -66,10 +66,10 @@ export default function DashboardTile({ dashboard, isFavorite = false }: Dashboa
       <h3 className="font-bold text-base text-black mb-1">{dashboard.title}</h3>
       <p className="text-gray-700 text-xs mb-3 flex-grow">{dashboard.description}</p>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-neutral-dark">
+        <span className="text-gray-700 font-medium">
           <Eye className="inline h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
         </span>
-        <Link href={`/dashboard/${dashboard.id}`} className="text-primary font-medium hover:underline">
+        <Link href={`/dashboard/${dashboard.id}`} className="text-primary font-semibold hover:underline">
           Open
         </Link>
       </div>
