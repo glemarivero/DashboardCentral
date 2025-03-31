@@ -86,8 +86,8 @@ export default function DashboardCard({ dashboard, isFavorite = false }: Dashboa
         )}
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-1">{dashboard.title}</h3>
-        <p className="text-neutral-dark text-sm mb-3">{dashboard.description}</p>
+        <h3 className="font-bold text-lg text-black mb-1">{dashboard.title}</h3>
+        <p className="text-gray-700 text-sm mb-3">{dashboard.description}</p>
         <div className="flex items-center justify-between">
           <span className="text-xs text-neutral-dark">
             Last updated: {formatTimeAgo(new Date(dashboard.updatedAt))}

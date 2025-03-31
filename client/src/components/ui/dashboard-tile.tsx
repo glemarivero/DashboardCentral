@@ -63,8 +63,8 @@ export default function DashboardTile({ dashboard, isFavorite = false }: Dashboa
           <Star className={`h-4 w-4 ${isFavorited ? 'fill-current' : ''}`} />
         </button>
       </div>
-      <h3 className="font-medium text-base mb-1">{dashboard.title}</h3>
-      <p className="text-neutral-dark text-xs mb-3 flex-grow">{dashboard.description}</p>
+      <h3 className="font-bold text-base text-black mb-1">{dashboard.title}</h3>
+      <p className="text-gray-700 text-xs mb-3 flex-grow">{dashboard.description}</p>
       <div className="flex items-center justify-between text-xs">
         <span className="text-neutral-dark">
           <Eye className="inline h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views

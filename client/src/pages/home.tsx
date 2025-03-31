@@ -93,10 +93,10 @@ export default function Home() {
         <section className="bg-gradient-to-r from-primary/90 to-primary">
           <div className="container mx-auto px-4 py-12 md:py-20">
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Find the right dashboard for your insights
               </h1>
-              <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              <p className="text-white text-lg max-w-2xl mx-auto font-medium">
                 Search across our collection of dashboards to discover the data that powers your business decisions
               </p>
             </div>
@@ -164,7 +164,7 @@ export default function Home() {
         {/* Featured Dashboards Section */}
         <section className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Featured Dashboards</h2>
+            <h2 className="text-2xl font-bold text-black">Featured Dashboards</h2>
             <Link href="/category/all" className="text-primary hover:underline flex items-center gap-1">
               View all <ArrowRight className="h-4 w-4" />
             </Link>
@@ -190,7 +190,7 @@ export default function Home() {
         {/* Recently Used Dashboards */}
         <section className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Recently Used</h2>
+            <h2 className="text-2xl font-bold text-black">Recently Used</h2>
             <Link href="#" className="text-primary hover:underline flex items-center gap-1">
               View history <ArrowRight className="h-4 w-4" />
             </Link>
@@ -238,7 +238,7 @@ export default function Home() {
         <section className="bg-neutral-light py-8 mt-4">
           <div className="container mx-auto px-4">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold">Explore All Dashboards</h2>
+              <h2 className="text-2xl font-bold text-black">Explore All Dashboards</h2>
             </div>
 
             {/* Category Tabs */}
