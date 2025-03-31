@@ -175,10 +175,18 @@ export default function Home() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : featuredDashboards && featuredDashboards.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredDashboards.map((dashboard: any) => (
-                <DashboardCard key={dashboard.id} dashboard={dashboard} />
-              ))}
+            <div className="relative">
+              <div className="overflow-x-auto pb-4 hide-scrollbar">
+                <div className="flex space-x-6" style={{ minWidth: "max-content" }}>
+                  {featuredDashboards.map((dashboard: any) => (
+                    <div key={dashboard.id} className="w-full sm:w-[350px] flex-shrink-0">
+                      <DashboardCard dashboard={dashboard} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-white to-transparent w-8 pointer-events-none"></div>
+              <div className="absolute top-0 bottom-0 right-0 bg-gradient-to-l from-white to-transparent w-8 pointer-events-none"></div>
             </div>
           ) : (
             <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
@@ -201,31 +209,37 @@ export default function Home() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : recentDashboards && recentDashboards.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {recentDashboards.map((dashboard: any) => (
-                <div key={dashboard.id} className="bg-white rounded-lg shadow-md border border-gray-100 p-4 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-semibold text-base text-gray-800">{dashboard.title}</h3>
-                    <Badge 
-                      variant="outline" 
-                      className={dashboard.category === "ecom" ? "bg-accent/10 text-accent font-medium" : 
-                                dashboard.category === "strategy" ? "bg-secondary/10 text-secondary font-medium" : 
-                                "bg-primary/10 text-primary font-medium"}
-                    >
-                      {dashboard.category.toUpperCase()}
-                    </Badge>
-                  </div>
-                  <p className="text-gray-700 text-xs mb-3">{dashboard.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-xs text-gray-700 font-medium">
-                      <Eye className="h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
+            <div className="relative">
+              <div className="overflow-x-auto pb-4 hide-scrollbar">
+                <div className="flex space-x-4" style={{ minWidth: "max-content" }}>
+                  {recentDashboards.map((dashboard: any) => (
+                    <div key={dashboard.id} className="w-full sm:w-[280px] flex-shrink-0 bg-white rounded-lg shadow-md border border-gray-100 p-4 hover:shadow-lg transition-shadow">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-semibold text-base text-gray-800">{dashboard.title}</h3>
+                        <Badge 
+                          variant="outline" 
+                          className={dashboard.category === "ecom" ? "bg-accent/10 text-accent font-medium" : 
+                                    dashboard.category === "strategy" ? "bg-secondary/10 text-secondary font-medium" : 
+                                    "bg-primary/10 text-primary font-medium"}
+                        >
+                          {dashboard.category.toUpperCase()}
+                        </Badge>
+                      </div>
+                      <p className="text-gray-700 text-xs mb-3">{dashboard.description}</p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-xs text-gray-700 font-medium">
+                          <Eye className="h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
+                        </div>
+                        <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-xs font-semibold hover:underline">
+                          View
+                        </Link>
+                      </div>
                     </div>
-                    <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-xs font-semibold hover:underline">
-                      View
-                    </Link>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div className="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-white to-transparent w-8 pointer-events-none"></div>
+              <div className="absolute top-0 bottom-0 right-0 bg-gradient-to-l from-white to-transparent w-8 pointer-events-none"></div>
             </div>
           ) : (
             <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
