@@ -69,8 +69,8 @@ export default function DashboardTile({ dashboard, isFavorite = false }: Dashboa
         <span className="text-neutral-dark">
           <Eye className="inline h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
         </span>
-        <Link href={`/dashboard/${dashboard.id}`}>
-          <a className="text-primary font-medium hover:underline">Open</a>
+        <Link href={`/dashboard/${dashboard.id}`} className="text-primary font-medium hover:underline">
+          Open
         </Link>
       </div>
     </div>

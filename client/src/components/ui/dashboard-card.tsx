@@ -92,8 +92,8 @@ export default function DashboardCard({ dashboard, isFavorite = false }: Dashboa
           <span className="text-xs text-neutral-dark">
             Last updated: {formatTimeAgo(new Date(dashboard.updatedAt))}
           </span>
-          <Link href={`/dashboard/${dashboard.id}`}>
-            <a className="text-primary text-sm font-medium hover:underline">View Dashboard</a>
+          <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-sm font-medium hover:underline">
+            View Dashboard
           </Link>
         </div>
       </div>
