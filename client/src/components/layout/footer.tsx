@@ -17,29 +17,29 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Quick Links</h4>
-            <ul className="space-y-2 text-sm text-white/80">
-              <li><Link href="/" className="hover:text-white transition-colors">All Dashboards</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Recent Activity</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Favorites</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Get Support</Link></li>
+            <ul className="space-y-2 text-sm text-white">
+              <li><Link href="/" className="font-medium hover:text-white hover:underline transition-colors">All Dashboards</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Recent Activity</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Favorites</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Get Support</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Categories</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/category/data" className="hover:text-white">Data</Link></li>
-              <li><Link href="/category/business" className="hover:text-white">Business</Link></li>
-              <li><Link href="/category/ecom" className="hover:text-white">ECOM</Link></li>
-              <li><Link href="/category/strategy" className="hover:text-white">Strategy</Link></li>
+            <ul className="space-y-2 text-sm text-white">
+              <li><Link href="/category/data" className="font-medium hover:text-white hover:underline transition-colors">Data</Link></li>
+              <li><Link href="/category/business" className="font-medium hover:text-white hover:underline transition-colors">Business</Link></li>
+              <li><Link href="/category/ecom" className="font-medium hover:text-white hover:underline transition-colors">ECOM</Link></li>
+              <li><Link href="/category/strategy" className="font-medium hover:text-white hover:underline transition-colors">Strategy</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Resources</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="#" className="hover:text-white">Documentation</Link></li>
-              <li><Link href="#" className="hover:text-white">API Reference</Link></li>
-              <li><Link href="#" className="hover:text-white">Request New Dashboard</Link></li>
-              <li><Link href="#" className="hover:text-white">Contact Admin</Link></li>
+            <ul className="space-y-2 text-sm text-white">
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Documentation</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">API Reference</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Request New Dashboard</Link></li>
+              <li><Link href="#" className="font-medium hover:text-white hover:underline transition-colors">Contact Admin</Link></li>
             </ul>
           </div>
         </div>
