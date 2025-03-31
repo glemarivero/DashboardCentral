@@ -245,31 +245,31 @@ export default function Home() {
             <div className="mb-6 border-b border-neutral-medium">
               <div className="flex overflow-x-auto space-x-8 pb-2 category-tabs">
                 <button 
-                  className={`${activeTabCategory === "all" ? "text-primary border-b-2 border-primary" : "text-secondary hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
+                  className={`${activeTabCategory === "all" ? "text-primary border-b-2 border-primary" : "text-gray-800 hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
                   onClick={() => setActiveTabCategory("all")}
                 >
                   All Dashboards
                 </button>
                 <button 
-                  className={`${activeTabCategory === "data" ? "text-primary border-b-2 border-primary" : "text-secondary hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
+                  className={`${activeTabCategory === "data" ? "text-primary border-b-2 border-primary" : "text-gray-800 hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
                   onClick={() => setActiveTabCategory("data")}
                 >
                   Data
                 </button>
                 <button 
-                  className={`${activeTabCategory === "business" ? "text-primary border-b-2 border-primary" : "text-secondary hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
+                  className={`${activeTabCategory === "business" ? "text-primary border-b-2 border-primary" : "text-gray-800 hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
                   onClick={() => setActiveTabCategory("business")}
                 >
                   Business
                 </button>
                 <button 
-                  className={`${activeTabCategory === "ecom" ? "text-primary border-b-2 border-primary" : "text-secondary hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
+                  className={`${activeTabCategory === "ecom" ? "text-primary border-b-2 border-primary" : "text-gray-800 hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
                   onClick={() => setActiveTabCategory("ecom")}
                 >
                   ECOM
                 </button>
                 <button 
-                  className={`${activeTabCategory === "strategy" ? "text-primary border-b-2 border-primary" : "text-secondary hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
+                  className={`${activeTabCategory === "strategy" ? "text-primary border-b-2 border-primary" : "text-gray-800 hover:text-primary"} pb-2 font-medium whitespace-nowrap`}
                   onClick={() => setActiveTabCategory("strategy")}
                 >
                   Strategy
