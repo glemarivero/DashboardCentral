@@ -9,7 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import { Category as CategoryType } from "@shared/schema";
 
 export default function Category() {
-  const { category } = useParams();
+  const { category = "" } = useParams();
   const { setSelectedCategory } = useDashboardContext();
   const isValidCategory = ["data", "business", "ecom", "strategy", "all"].includes(category);
   
@@ -71,10 +71,8 @@ export default function Category() {
       
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href="/">
-            <a className="inline-flex items-center text-neutral-dark hover:text-primary">
-              <ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard Portal
-            </a>
+          <Link href="/" className="inline-flex items-center text-neutral-dark hover:text-primary">
+            <ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard Portal
           </Link>
         </div>
         
@@ -91,10 +89,8 @@ export default function Category() {
           <div className="text-center py-12 bg-white rounded-lg shadow-sm">
             <h2 className="text-xl font-semibold text-error mb-2">Invalid Category</h2>
             <p className="text-neutral-dark">The requested category does not exist.</p>
-            <Link href="/">
-              <a className="text-primary hover:underline inline-block mt-4">
-                Return to Dashboard Portal
-              </a>
+            <Link href="/" className="text-primary hover:underline inline-block mt-4">
+              Return to Dashboard Portal
             </Link>
           </div>
         ) : isLoadingDashboards ? (

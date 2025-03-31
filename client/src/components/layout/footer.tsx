@@ -17,11 +17,11 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Quick Links</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/" className="hover:text-white">All Dashboards</Link></li>
-              <li><Link href="#" className="hover:text-white">Recent Activity</Link></li>
-              <li><Link href="#" className="hover:text-white">Favorites</Link></li>
-              <li><Link href="#" className="hover:text-white">Get Support</Link></li>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li><Link href="/" className="hover:text-white transition-colors">All Dashboards</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Recent Activity</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Favorites</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Get Support</Link></li>
             </ul>
           </div>
           <div>

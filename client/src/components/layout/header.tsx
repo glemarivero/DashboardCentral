@@ -62,7 +62,7 @@ export default function Header() {
             {CATEGORIES.map((category) => (
               <div key={category.slug} className="relative group">
                 <button 
-                  className="flex items-center px-2 py-1 font-medium hover:text-primary"
+                  className="flex items-center px-2 py-1 font-medium text-secondary hover:text-primary transition-colors"
                   onClick={() => handleCategoryClick(category.slug as Category)}
                 >
                   {category.name} <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
@@ -70,7 +70,7 @@ export default function Header() {
                 <div className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <div className="py-2">
                     {category.items.map((item, idx) => (
-                      <Link key={idx} href={`/category/${category.slug}`} className="block px-4 py-2 hover:bg-neutral-light">
+                      <Link key={idx} href={`/category/${category.slug}`} className="block px-4 py-2 text-secondary hover:bg-neutral-light hover:text-primary transition-colors">
                         {item}
                       </Link>
                     ))}
@@ -124,7 +124,7 @@ function MobileNavItem({ title, items, slug, onCategoryClick }: MobileNavItemPro
   return (
     <div>
       <button 
-        className="w-full text-left px-3 py-2 flex justify-between items-center"
+        className="w-full text-left px-3 py-2 flex justify-between items-center text-secondary font-medium"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{title}</span>
@@ -137,7 +137,7 @@ function MobileNavItem({ title, items, slug, onCategoryClick }: MobileNavItemPro
           <Link 
             key={idx} 
             href={`/category/${slug}`}
-            className="block px-3 py-2"
+            className="block px-3 py-2 text-secondary hover:text-primary transition-colors"
             onClick={(e) => {
               e.preventDefault();
               onCategoryClick(slug);
