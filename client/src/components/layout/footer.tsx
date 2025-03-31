@@ -18,28 +18,28 @@ export default function Footer() {
           <div>
             <h4 className="text-base font-medium mb-3">Quick Links</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/"><a className="hover:text-white">All Dashboards</a></Link></li>
-              <li><a href="#" className="hover:text-white">Recent Activity</a></li>
-              <li><a href="#" className="hover:text-white">Favorites</a></li>
-              <li><a href="#" className="hover:text-white">Get Support</a></li>
+              <li><Link href="/" className="hover:text-white">All Dashboards</Link></li>
+              <li><Link href="#" className="hover:text-white">Recent Activity</Link></li>
+              <li><Link href="#" className="hover:text-white">Favorites</Link></li>
+              <li><Link href="#" className="hover:text-white">Get Support</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Categories</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/category/data"><a className="hover:text-white">Data</a></Link></li>
-              <li><Link href="/category/business"><a className="hover:text-white">Business</a></Link></li>
-              <li><Link href="/category/ecom"><a className="hover:text-white">ECOM</a></Link></li>
-              <li><Link href="/category/strategy"><a className="hover:text-white">Strategy</a></Link></li>
+              <li><Link href="/category/data" className="hover:text-white">Data</Link></li>
+              <li><Link href="/category/business" className="hover:text-white">Business</Link></li>
+              <li><Link href="/category/ecom" className="hover:text-white">ECOM</Link></li>
+              <li><Link href="/category/strategy" className="hover:text-white">Strategy</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-base font-medium mb-3">Resources</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><a href="#" className="hover:text-white">Documentation</a></li>
-              <li><a href="#" className="hover:text-white">API Reference</a></li>
-              <li><a href="#" className="hover:text-white">Request New Dashboard</a></li>
-              <li><a href="#" className="hover:text-white">Contact Admin</a></li>
+              <li><Link href="#" className="hover:text-white">Documentation</Link></li>
+              <li><Link href="#" className="hover:text-white">API Reference</Link></li>
+              <li><Link href="#" className="hover:text-white">Request New Dashboard</Link></li>
+              <li><Link href="#" className="hover:text-white">Contact Admin</Link></li>
             </ul>
           </div>
         </div>

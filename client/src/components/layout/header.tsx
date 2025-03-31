@@ -52,11 +52,9 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center space-x-2">
-              <LayoutDashboard className="h-8 w-8 text-primary" />
-              <span className="font-semibold text-xl tracking-tight">Dashboard Portal</span>
-            </a>
+          <Link href="/" className="flex items-center space-x-2">
+            <LayoutDashboard className="h-8 w-8 text-primary" />
+            <span className="font-semibold text-xl tracking-tight">Dashboard Portal</span>
           </Link>
 
           {/* Navigation - Desktop */}
@@ -72,8 +70,8 @@ export default function Header() {
                 <div className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <div className="py-2">
                     {category.items.map((item, idx) => (
-                      <Link key={idx} href={`/category/${category.slug}`}>
-                        <a className="block px-4 py-2 hover:bg-neutral-light">{item}</a>
+                      <Link key={idx} href={`/category/${category.slug}`} className="block px-4 py-2 hover:bg-neutral-light">
+                        {item}
                       </Link>
                     ))}
                   </div>
@@ -136,13 +134,16 @@ function MobileNavItem({ title, items, slug, onCategoryClick }: MobileNavItemPro
       </button>
       <div className={`pl-4 ${isOpen ? '' : 'hidden'}`}>
         {items.map((item, idx) => (
-          <Link key={idx} href={`/category/${slug}`}>
-            <a 
-              className="block px-3 py-2"
-              onClick={() => onCategoryClick(slug)}
-            >
-              {item}
-            </a>
+          <Link 
+            key={idx} 
+            href={`/category/${slug}`}
+            className="block px-3 py-2"
+            onClick={(e) => {
+              e.preventDefault();
+              onCategoryClick(slug);
+            }}
+          >
+            {item}
           </Link>
         ))}
       </div>
