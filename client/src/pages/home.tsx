@@ -181,8 +181,8 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-8 bg-white rounded-lg shadow-sm">
-              <p className="text-neutral-dark">No featured dashboards available</p>
+            <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
+              <p className="text-gray-700 font-medium">No featured dashboards available</p>
             </div>
           )}
         </section>
@@ -203,24 +203,24 @@ export default function Home() {
           ) : recentDashboards && recentDashboards.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {recentDashboards.map((dashboard: any) => (
-                <div key={dashboard.id} className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                <div key={dashboard.id} className="bg-white rounded-lg shadow-md border border-gray-100 p-4 hover:shadow-lg transition-shadow">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-medium text-base">{dashboard.title}</h3>
+                    <h3 className="font-semibold text-base text-gray-800">{dashboard.title}</h3>
                     <Badge 
                       variant="outline" 
-                      className={dashboard.category === "ecom" ? "bg-accent/10 text-accent" : 
-                                dashboard.category === "strategy" ? "bg-secondary/10 text-secondary" : 
-                                "bg-primary/10 text-primary"}
+                      className={dashboard.category === "ecom" ? "bg-accent/10 text-accent font-medium" : 
+                                dashboard.category === "strategy" ? "bg-secondary/10 text-secondary font-medium" : 
+                                "bg-primary/10 text-primary font-medium"}
                     >
                       {dashboard.category.toUpperCase()}
                     </Badge>
                   </div>
-                  <p className="text-neutral-dark text-xs mb-3">{dashboard.description}</p>
+                  <p className="text-gray-700 text-xs mb-3">{dashboard.description}</p>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-xs text-neutral-dark">
+                    <div className="flex items-center text-xs text-gray-700 font-medium">
                       <Eye className="h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
                     </div>
-                    <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-xs font-medium hover:underline">
+                    <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-xs font-semibold hover:underline">
                       View
                     </Link>
                   </div>
@@ -228,8 +228,8 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-8 bg-white rounded-lg shadow-sm">
-              <p className="text-neutral-dark">No recently used dashboards</p>
+            <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
+              <p className="text-gray-700 font-medium">No recently used dashboards</p>
             </div>
           )}
         </section>
@@ -289,8 +289,8 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 bg-white rounded-lg shadow-sm">
-                <p className="text-neutral-dark">No dashboards found for this category</p>
+              <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
+                <p className="text-gray-700 font-medium">No dashboards found for this category</p>
               </div>
             )}
           </div>
