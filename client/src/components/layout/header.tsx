@@ -54,7 +54,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <LayoutDashboard className="h-8 w-8 text-primary" />
-            <span className="font-semibold text-xl tracking-tight">Dashboard Portal</span>
+            <span className="font-bold text-2xl tracking-tight text-gray-800">Dashboard Portal</span>
           </Link>
 
           {/* Navigation - Desktop */}
