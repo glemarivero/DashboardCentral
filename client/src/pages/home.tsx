@@ -165,10 +165,8 @@ export default function Home() {
         <section className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Featured Dashboards</h2>
-            <Link href="/category/all">
-              <a className="text-primary hover:underline flex items-center gap-1">
-                View all <ArrowRight className="h-4 w-4" />
-              </a>
+            <Link href="/category/all" className="text-primary hover:underline flex items-center gap-1">
+              View all <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -193,9 +191,9 @@ export default function Home() {
         <section className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Recently Used</h2>
-            <a href="#" className="text-primary hover:underline flex items-center gap-1">
+            <Link href="#" className="text-primary hover:underline flex items-center gap-1">
               View history <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
 
           {isRecentLoading ? (
@@ -222,10 +220,8 @@ export default function Home() {
                     <div className="flex items-center text-xs text-neutral-dark">
                       <Eye className="h-3 w-3 mr-1" /> {dashboard.views.toLocaleString()} views
                     </div>
-                    <Link href={`/dashboard/${dashboard.id}`}>
-                      <a className="text-primary text-xs font-medium hover:underline">
-                        View
-                      </a>
+                    <Link href={`/dashboard/${dashboard.id}`} className="text-primary text-xs font-medium hover:underline">
+                      View
                     </Link>
                   </div>
                 </div>

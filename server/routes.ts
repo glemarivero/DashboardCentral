@@ -41,48 +41,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // GET dashboard by ID
-  app.get("/api/dashboards/:id", async (req: Request, res: Response) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid dashboard ID" });
-      }
-      
-      const dashboard = await storage.getDashboardById(id);
-      if (!dashboard) {
-        return res.status(404).json({ message: "Dashboard not found" });
-      }
-      
-      // Increment views and add to recent dashboards
-      await storage.incrementDashboardViews(id);
-      await storage.addRecentDashboard(id);
-      
-      const isFavorite = await storage.isFavoriteDashboard(id);
-      
-      res.json({ ...dashboard, isFavorite });
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching dashboard" });
-    }
-  });
-
-  // GET dashboards by category
-  app.get("/api/dashboards/category/:category", async (req: Request, res: Response) => {
-    try {
-      const category = req.params.category as any;
-      const validCategories = ["data", "business", "ecom", "strategy"];
-      
-      if (!validCategories.includes(category)) {
-        return res.status(400).json({ message: "Invalid category" });
-      }
-      
-      const dashboards = await storage.getDashboardsByCategory(category);
-      res.json(dashboards);
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching dashboards by category" });
-    }
-  });
-
   // GET featured dashboards
   app.get("/api/dashboards/featured", async (req: Request, res: Response) => {
     try {
@@ -102,6 +60,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(dashboards);
     } catch (error) {
       res.status(500).json({ message: "Error fetching recent dashboards" });
+    }
+  });
+
+  // GET favorite dashboards
+  app.get("/api/dashboards/favorites", async (req: Request, res: Response) => {
+    try {
+      const dashboards = await storage.getFavoriteDashboards();
+      res.json(dashboards);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching favorite dashboards" });
+    }
+  });
+
+  // GET dashboards by category
+  app.get("/api/dashboards/category/:category", async (req: Request, res: Response) => {
+    try {
+      const category = req.params.category as any;
+      const validCategories = ["data", "business", "ecom", "strategy"];
+      
+      if (!validCategories.includes(category)) {
+        return res.status(400).json({ message: "Invalid category" });
+      }
+      
+      const dashboards = await storage.getDashboardsByCategory(category);
+      res.json(dashboards);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching dashboards by category" });
     }
   });
 
@@ -140,79 +125,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ dashboards: filteredResults });
     } catch (error) {
       res.status(500).json({ message: "Error searching dashboards" });
-    }
-  });
-
-  // POST create dashboard
-  app.post("/api/dashboards", async (req: Request, res: Response) => {
-    try {
-      const validatedDashboard = insertDashboardSchema.safeParse(req.body);
-      
-      if (!validatedDashboard.success) {
-        return res.status(400).json({ message: "Invalid dashboard data", errors: validatedDashboard.error.format() });
-      }
-      
-      const dashboard = await storage.createDashboard(validatedDashboard.data);
-      
-      // Generate and store embeddings for the new dashboard
-      const embedding = embeddingService.generateDashboardEmbedding(dashboard);
-      await storage.updateDashboardEmbeddings(dashboard.id, embedding);
-      
-      res.status(201).json(dashboard);
-    } catch (error) {
-      res.status(500).json({ message: "Error creating dashboard" });
-    }
-  });
-
-  // PUT update dashboard
-  app.put("/api/dashboards/:id", async (req: Request, res: Response) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid dashboard ID" });
-      }
-      
-      const validatedDashboard = insertDashboardSchema.partial().safeParse(req.body);
-      
-      if (!validatedDashboard.success) {
-        return res.status(400).json({ message: "Invalid dashboard data", errors: validatedDashboard.error.format() });
-      }
-      
-      const updatedDashboard = await storage.updateDashboard(id, validatedDashboard.data);
-      
-      if (!updatedDashboard) {
-        return res.status(404).json({ message: "Dashboard not found" });
-      }
-      
-      // Regenerate embeddings if title or description changed
-      if (req.body.title || req.body.description) {
-        const embedding = embeddingService.generateDashboardEmbedding(updatedDashboard);
-        await storage.updateDashboardEmbeddings(id, embedding);
-      }
-      
-      res.json(updatedDashboard);
-    } catch (error) {
-      res.status(500).json({ message: "Error updating dashboard" });
-    }
-  });
-
-  // DELETE dashboard
-  app.delete("/api/dashboards/:id", async (req: Request, res: Response) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid dashboard ID" });
-      }
-      
-      const success = await storage.deleteDashboard(id);
-      
-      if (!success) {
-        return res.status(404).json({ message: "Dashboard not found" });
-      }
-      
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ message: "Error deleting dashboard" });
     }
   });
 
@@ -278,13 +190,101 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // GET favorite dashboards
-  app.get("/api/dashboards/favorites", async (req: Request, res: Response) => {
+  // POST create dashboard
+  app.post("/api/dashboards", async (req: Request, res: Response) => {
     try {
-      const dashboards = await storage.getFavoriteDashboards();
-      res.json(dashboards);
+      const validatedDashboard = insertDashboardSchema.safeParse(req.body);
+      
+      if (!validatedDashboard.success) {
+        return res.status(400).json({ message: "Invalid dashboard data", errors: validatedDashboard.error.format() });
+      }
+      
+      const dashboard = await storage.createDashboard(validatedDashboard.data);
+      
+      // Generate and store embeddings for the new dashboard
+      const embedding = embeddingService.generateDashboardEmbedding(dashboard);
+      await storage.updateDashboardEmbeddings(dashboard.id, embedding);
+      
+      res.status(201).json(dashboard);
     } catch (error) {
-      res.status(500).json({ message: "Error fetching favorite dashboards" });
+      res.status(500).json({ message: "Error creating dashboard" });
+    }
+  });
+
+  // GET dashboard by ID - This should be AFTER all other /api/dashboards/* routes
+  app.get("/api/dashboards/:id", async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid dashboard ID" });
+      }
+      
+      const dashboard = await storage.getDashboardById(id);
+      if (!dashboard) {
+        return res.status(404).json({ message: "Dashboard not found" });
+      }
+      
+      // Increment views and add to recent dashboards
+      await storage.incrementDashboardViews(id);
+      await storage.addRecentDashboard(id);
+      
+      const isFavorite = await storage.isFavoriteDashboard(id);
+      
+      res.json({ ...dashboard, isFavorite });
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching dashboard" });
+    }
+  });
+
+  // PUT update dashboard
+  app.put("/api/dashboards/:id", async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid dashboard ID" });
+      }
+      
+      const validatedDashboard = insertDashboardSchema.partial().safeParse(req.body);
+      
+      if (!validatedDashboard.success) {
+        return res.status(400).json({ message: "Invalid dashboard data", errors: validatedDashboard.error.format() });
+      }
+      
+      const updatedDashboard = await storage.updateDashboard(id, validatedDashboard.data);
+      
+      if (!updatedDashboard) {
+        return res.status(404).json({ message: "Dashboard not found" });
+      }
+      
+      // Regenerate embeddings if title or description changed
+      if (req.body.title || req.body.description) {
+        const embedding = embeddingService.generateDashboardEmbedding(updatedDashboard);
+        await storage.updateDashboardEmbeddings(id, embedding);
+      }
+      
+      res.json(updatedDashboard);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating dashboard" });
+    }
+  });
+
+  // DELETE dashboard
+  app.delete("/api/dashboards/:id", async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid dashboard ID" });
+      }
+      
+      const success = await storage.deleteDashboard(id);
+      
+      if (!success) {
+        return res.status(404).json({ message: "Dashboard not found" });
+      }
+      
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting dashboard" });
     }
   });
 
