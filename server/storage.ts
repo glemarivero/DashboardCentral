@@ -315,7 +315,7 @@ export class MemStorage implements IStorage {
         category: "data",
         imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=400",
         createdBy: "Data Governance",
-        isFeatured: false
+        isFeatured: true
       },
       {
         title: "Executive Summary",
@@ -323,7 +323,7 @@ export class MemStorage implements IStorage {
         category: "business",
         imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=400",
         createdBy: "Business Intelligence",
-        isFeatured: false
+        isFeatured: true
       },
       {
         title: "Conversion Funnel Analysis",
