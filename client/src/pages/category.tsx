@@ -66,30 +66,30 @@ export default function Category() {
   };
 
   return (
-    <div className="font-sans bg-neutral-light text-secondary min-h-screen flex flex-col">
+    <div className="font-sans bg-neutral-light text-black min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href="/" className="inline-flex items-center text-neutral-dark hover:text-primary">
+          <Link href="/" className="inline-flex items-center text-black font-medium hover:text-primary">
             <ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard Portal
           </Link>
         </div>
         
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">{getCategoryDisplayName(category)} Dashboards</h1>
+          <h1 className="text-3xl font-bold text-black">{getCategoryDisplayName(category)} Dashboards</h1>
           {category !== "all" && (
-            <p className="text-neutral-dark mt-2">
+            <p className="text-gray-700 font-medium mt-2">
               Browse all dashboards in the {getCategoryDisplayName(category)} category
             </p>
           )}
         </div>
         
         {!isValidCategory ? (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <h2 className="text-xl font-semibold text-error mb-2">Invalid Category</h2>
-            <p className="text-neutral-dark">The requested category does not exist.</p>
-            <Link href="/" className="text-primary hover:underline inline-block mt-4">
+          <div className="text-center py-12 bg-white rounded-lg shadow-md border border-gray-200">
+            <h2 className="text-xl font-bold text-red-600 mb-2">Invalid Category</h2>
+            <p className="text-gray-700 font-medium">The requested category does not exist.</p>
+            <Link href="/" className="text-primary hover:underline inline-block mt-4 font-bold">
               Return to Dashboard Portal
             </Link>
           </div>
@@ -104,8 +104,8 @@ export default function Category() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <p className="text-neutral-dark">No dashboards found in this category</p>
+          <div className="text-center py-12 bg-white rounded-lg shadow-md border border-gray-200">
+            <p className="text-gray-700 font-medium">No dashboards found in this category</p>
           </div>
         )}
       </main>
