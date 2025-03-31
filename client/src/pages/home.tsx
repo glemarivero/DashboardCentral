@@ -109,51 +109,51 @@ export default function Home() {
         <section className="container mx-auto px-4 py-6">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             <button 
-              className={`px-4 py-2 rounded-full border border-neutral-medium ${
+              className={`px-4 py-2 rounded-full border-2 ${
                 activeTabCategory === "all" 
-                  ? "bg-primary text-white" 
-                  : "bg-white hover:bg-neutral-light"
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base`}
+                  ? "bg-primary text-white border-primary" 
+                  : "bg-white hover:bg-gray-100 text-black font-semibold border-gray-400"
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base shadow-sm`}
               onClick={() => handleCategoryFilterClick("all")}
             >
               All Dashboards
             </button>
             <button 
-              className={`px-4 py-2 rounded-full border border-neutral-medium ${
+              className={`px-4 py-2 rounded-full border-2 ${
                 activeTabCategory === "data" 
-                  ? "bg-primary text-white" 
-                  : "bg-white hover:bg-neutral-light"
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base`}
+                  ? "bg-primary text-white border-primary" 
+                  : "bg-white hover:bg-gray-100 text-black font-semibold border-gray-400"
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base shadow-sm`}
               onClick={() => handleCategoryFilterClick("data")}
             >
               Data
             </button>
             <button 
-              className={`px-4 py-2 rounded-full border border-neutral-medium ${
+              className={`px-4 py-2 rounded-full border-2 ${
                 activeTabCategory === "business" 
-                  ? "bg-primary text-white" 
-                  : "bg-white hover:bg-neutral-light"
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base`}
+                  ? "bg-primary text-white border-primary" 
+                  : "bg-white hover:bg-gray-100 text-black font-semibold border-gray-400"
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base shadow-sm`}
               onClick={() => handleCategoryFilterClick("business")}
             >
               Business
             </button>
             <button 
-              className={`px-4 py-2 rounded-full border border-neutral-medium ${
+              className={`px-4 py-2 rounded-full border-2 ${
                 activeTabCategory === "ecom" 
-                  ? "bg-primary text-white" 
-                  : "bg-white hover:bg-neutral-light"
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base`}
+                  ? "bg-primary text-white border-primary" 
+                  : "bg-white hover:bg-gray-100 text-black font-semibold border-gray-400"
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base shadow-sm`}
               onClick={() => handleCategoryFilterClick("ecom")}
             >
               ECOM
             </button>
             <button 
-              className={`px-4 py-2 rounded-full border border-neutral-medium ${
+              className={`px-4 py-2 rounded-full border-2 ${
                 activeTabCategory === "strategy" 
-                  ? "bg-primary text-white" 
-                  : "bg-white hover:bg-neutral-light"
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base`}
+                  ? "bg-primary text-white border-primary" 
+                  : "bg-white hover:bg-gray-100 text-black font-semibold border-gray-400"
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm md:text-base shadow-sm`}
               onClick={() => handleCategoryFilterClick("strategy")}
             >
               Strategy
