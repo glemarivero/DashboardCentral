@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -10,13 +10,15 @@ import { useDashboardContext } from "@/context/dashboard-context";
 import { Link, useLocation } from "wouter";
 import { Category } from "@shared/schema";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Eye } from "lucide-react";
+import { ArrowRight, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Home() {
   const { selectedCategory, setSelectedCategory } = useDashboardContext();
   const [modalDashboardId, setModalDashboardId] = useState<number | null>(null);
   const [activeTabCategory, setActiveTabCategory] = useState<Category | "all">("all");
   const [location, navigate] = useLocation();
+  const featuredScrollRef = useRef<HTMLDivElement>(null);
+  const recentScrollRef = useRef<HTMLDivElement>(null);
 
   // Fetch featured dashboards
   const { data: featuredDashboards, isLoading: isFeaturedLoading } = useQuery({
@@ -82,6 +84,21 @@ export default function Home() {
   // Close dashboard detail modal
   const closeDashboardModal = () => {
     setModalDashboardId(null);
+  };
+  
+  // Scroll functions for carousel navigation
+  const scrollFeatured = (direction: 'left' | 'right') => {
+    if (featuredScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -400 : 400;
+      featuredScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+  
+  const scrollRecent = (direction: 'left' | 'right') => {
+    if (recentScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -300 : 300;
+      recentScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -175,8 +192,8 @@ export default function Home() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : featuredDashboards && featuredDashboards.length > 0 ? (
-            <div className="relative">
-              <div className="overflow-x-auto pb-4 hide-scrollbar">
+            <div className="relative group">
+              <div className="overflow-x-auto pb-4 hide-scrollbar" ref={featuredScrollRef}>
                 <div className="flex space-x-6" style={{ minWidth: "max-content" }}>
                   {featuredDashboards.map((dashboard: any) => (
                     <div key={dashboard.id} className="w-full sm:w-[350px] flex-shrink-0">
@@ -187,6 +204,22 @@ export default function Home() {
               </div>
               <div className="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-white to-transparent w-8 pointer-events-none"></div>
               <div className="absolute top-0 bottom-0 right-0 bg-gradient-to-l from-white to-transparent w-8 pointer-events-none"></div>
+              
+              {/* Carousel Navigation Buttons */}
+              <button 
+                onClick={() => scrollFeatured('left')}
+                className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Previous featured dashboards"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-600" />
+              </button>
+              <button 
+                onClick={() => scrollFeatured('right')}
+                className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Next featured dashboards"
+              >
+                <ChevronRight className="h-5 w-5 text-gray-600" />
+              </button>
             </div>
           ) : (
             <div className="text-center py-8 bg-white rounded-lg shadow-md border border-gray-200">
