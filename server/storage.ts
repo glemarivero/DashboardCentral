@@ -103,7 +103,7 @@ export class MemStorage implements IStorage {
     );
   }
 
-  async getFeaturedDashboards(limit: number = 3): Promise<Dashboard[]> {
+  async getFeaturedDashboards(limit: number = 5): Promise<Dashboard[]> {
     return Array.from(this.dashboards.values())
       .filter((dashboard) => dashboard.isFeatured)
       .sort((a, b) => b.views - a.views)
